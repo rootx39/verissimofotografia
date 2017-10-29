@@ -1,1 +1,10 @@
-.barra-topo{ background: black; height: 50px; }
+
+/* Topo - Menu */
+.logo{background: black; font-family: 'Open Sans', sans-serif; color: white; font-size: 15px; padding: 5px; text-align: center;}
+.menu-principal ul li { display: inline;}
+a:link{ text-decoration: none; }
+a:hover{ text-decoration: underline; }
+
+/* Mid */
+
+/* footer */
