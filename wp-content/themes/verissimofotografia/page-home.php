@@ -6,7 +6,7 @@
 		<section class="trabalhos container">Trabalhos</section>
 		<section class="meio container">
 			<div class="noticias col-md 12">
-				
+				<p>teste</p>
 			</div>
 		</section>
 		<section class="mapa container">Mapa</section>
