@@ -1,9 +1,35 @@
 
 /* Topo - Menu */
-.logo{background: black; font-family: 'Open Sans', sans-serif; color: white; font-size: 15px; padding: 5px; text-align: center;}
-.menu-principal ul li { display: inline;}
-a:link{ text-decoration: none; }
-a:hover{ text-decoration: underline; }
+.logo{
+	background: black;
+	font-family: 'Open Sans', sans-serif;
+	color: white;
+	font-size: 15px; 
+	padding: 5px; 
+	text-align: center;
+	line-height: 50px;
+}
+.menu-principal{
+	background: black; 
+	font-family: 'Open Sans', sans-serif; 
+	color: white; 
+	font-size: 15px; 
+	padding: 5px;
+}
+.menu-principal ul li {
+	float: right;
+	display: inline;
+	line-height: 50px;
+}
+a:link{ 
+	text-decoration: none;
+	color: white;
+	padding-right: 20px;
+}
+a:hover{ 
+	text-decoration: underline;
+	color: red;
+}
 
 /* Mid */
 
