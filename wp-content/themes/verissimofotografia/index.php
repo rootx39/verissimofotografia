@@ -2,11 +2,12 @@
 <?php get_header(); ?>
 <div class="conteudo">
 	<main>
-		<div class="fotos">
-			<div class="foto-1">Foto 1</div>
-			<div class="foto-2">Foto 2</div>
-			<div class="foto-3">Foto 3</div>
-		</div>
+		<section class="slide container">Slide</section>
+		<section class="trabalhos container">Trabalhos</section>
+		<section class="meio container">
+			<div class="noticias col-md 12">Noticias</div>
+		</section>
+		<section class="mapa container">Mapa</section>
 	</main>
 </div>
 <?php get_footer(); ?>

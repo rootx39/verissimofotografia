@@ -14,6 +14,7 @@ add_action('wp_enqueue_scripts', 'load_scripts');
 //Função para menus
 register_nav_menus(
 	array(
-		'meu_menu_principal' => 'Menu Principal'
+		'meu_menu_principal' => 'Menu Principal',
+		'menu-rodape' => 'Menu Rodapé'
 	)
 );

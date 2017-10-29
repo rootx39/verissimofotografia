@@ -1,5 +1,6 @@
 
-/* Topo - Menu */
+/* Topo - logo */
+
 .logo{
 	background: black;
 	font-family: 'Open Sans', sans-serif;
@@ -9,28 +10,52 @@
 	text-align: center;
 	line-height: 50px;
 }
+/* Topo - Menu */
+
 .menu-principal{
+	font-family: 'Open Sans', sans-serif;
 	background: black; 
-	font-family: 'Open Sans', sans-serif; 
 	color: white; 
-	font-size: 15px; 
 	padding: 5px;
 }
-.menu-principal ul li {
-	float: right;
+.menu-principal ul li, .menu-rodape ul li {
 	display: inline;
 	line-height: 50px;
+	padding-right: 20px;
 }
 a:link{ 
 	text-decoration: none;
 	color: white;
-	padding-right: 20px;
 }
 a:hover{ 
 	text-decoration: underline;
-	color: red;
+	color: #f55;
+}
+.diaehora{
+	background: #8B1A1A;
+	height: 15px;
+	line-height: 15px;
+	color: white;
+	font-weight: bold;
+	font-size: 10px;
+	font-family: 'Open Sans', sans-serif;
 }
 
 /* Mid */
 
 /* footer */
+footer{
+	background: black;
+	font-family: 'Open Sans', sans-serif;
+}
+.footer{
+	position:fixed;
+	bottom:0;
+
+}
+.copyright{
+	font-size: 10px;
+	font-family: 'Open Sans', sans-serif;
+	color: white;
+}
+
