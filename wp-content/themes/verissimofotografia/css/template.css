@@ -4,11 +4,20 @@
 body{
 	margin: 0;
 	padding: 0;
+	background-color: black;
 }
 html{
 	margin: 0;
 	padding: 0;
 }
+
+/* Topo Barra*/
+
+.barra-full-width{
+	width: 100%;
+	background-color: black;
+}
+
 /* Topo - logo */
 
 .logo{
@@ -20,6 +29,7 @@ html{
 	text-align: center;
 	line-height: 50px;
 }
+
 /* Topo - Menu */
 
 .menu-principal{
@@ -35,7 +45,7 @@ html{
 }
 a:link{ 
 	text-decoration: none;
-	color: white;
+	color: #fff;
 }
 a:hover{ 
 	text-decoration: underline;
@@ -53,6 +63,9 @@ a:hover{
 
 /* Mid */
 
+.corbranca{
+	background-color: #fff;
+}
 /* footer */
 footer{
 	background: black;

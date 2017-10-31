@@ -4,9 +4,9 @@ Template Name: Default Page
 */
 ?>
 <?php get_header(); ?>
-<div class="conteudo-wrapper">
+<div class="container conteudo-wrapper corbranca">
 	<main>
-		<div class="conteudo container">
+		<div class="conteudo">
 			<?php 
 			// Se tiver algum post
 				if(have_posts()):

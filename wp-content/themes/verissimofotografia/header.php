@@ -7,14 +7,11 @@
 </head>
 <body <?php body_class(); ?>>
 <header>
-	<div class="barra-topo container">
-		<div class="row">
-			<div class="logo col-md-3">Verissimo Fotografia</div>
-			<div class="menu-principal col-md-9 text-right"><?php wp_nav_menu( array('theme_location' => 'meu_menu_principal')) ?></div>			
-		</div>
-		<div class="row">
-			<div class="diaehora text-right col-md-12">
-				<?php the_time('j \d\e F \d\e Y') ?>
+	<div class="barra-full-width">
+		<div class="container">
+			<div class="row">
+				<div class="logo col-md-3"><a href="index.php">Verissimo Fotografia</a></div>
+				<div class="menu-principal col-md-9 text-right"><?php wp_nav_menu( array('theme_location' => 'meu_menu_principal')) ?></div>			
 			</div>
 		</div>
 	</div>
