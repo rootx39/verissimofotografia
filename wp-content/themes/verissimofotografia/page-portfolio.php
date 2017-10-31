@@ -1,7 +1,9 @@
-<?php get_header(); ?>	
-<div class="container">
-    <div>
-        <figure><img src="img/fig_vertical_05.png" /><img src="img/fig_vertical_02.png" /><img src="img/fig_vertical_03.png" /></figure>
-    </div>
+<?php get_header(); ?>
+<div class="container conteudo-wrapper">
+	<main>
+		<div class="conteudo">
+			<?php the_content(); ?>
+		</div>
+	</main>
 </div>
 <?php get_footer(); ?>
