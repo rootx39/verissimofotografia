@@ -4,7 +4,6 @@
 body{
 	margin: 0;
 	padding: 0;
-	background-color: black;
 }
 html{
 	margin: 0;
@@ -66,6 +65,16 @@ a:hover{
 .corbranca{
 	background-color: #fff;
 }
+.esquerda{
+	float: left;
+}
+.lado_e{
+	float: left;
+	padding: 2px;
+	text-align: center;
+	background-color: #DCDCDC;
+}
+
 /* footer */
 footer{
 	background: black;

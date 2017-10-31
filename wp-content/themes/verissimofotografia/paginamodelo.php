@@ -4,7 +4,7 @@ Template Name: Default Page
 */
 ?>
 <?php get_header(); ?>
-<div class="container conteudo-wrapper corbranca">
+<div class="container conteudo-wrapper">
 	<main>
 		<div class="conteudo">
 			<?php 
