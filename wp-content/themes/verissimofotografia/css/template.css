@@ -28,6 +28,10 @@ html{
 	text-align: center;
 	line-height: 50px;
 }
+/* Cabeçalho */
+.img-padding{
+	padding: 10px;
+}
 
 /* Topo - Menu */
 
@@ -50,20 +54,14 @@ a:hover{
 	text-decoration: underline;
 	color: #f55;
 }
-.diaehora{
-	background: #363636;
-	height: 15px;
-	line-height: 15px;
-	color: white;
-	font-weight: bold;
-	font-size: 10px;
-	font-family: 'Open Sans', sans-serif;
-}
 
 /* Mid */
 
 .corbranca{
 	background-color: #fff;
+}
+.txt-branco{
+	color: #fff;
 }
 .esquerda{
 	float: left;
@@ -73,6 +71,11 @@ a:hover{
 	padding: 2px;
 	text-align: center;
 	background-color: #DCDCDC;
+}
+.mid-bot{
+	background-color: #4F4F4F;
+	padding: 5px;
+	margin: 15px;
 }
 
 /* footer */
