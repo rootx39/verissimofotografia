@@ -4,11 +4,28 @@
 body{
 	margin: 0;
 	padding: 0;
+	background-color: #363636;
 }
 html{
 	margin: 0;
 	padding: 0;
 }
+	/* Cores para Texto */
+
+	.txt-preto{
+		color: #000;
+	}
+	.txt-branco{
+		color: #fff;
+	}
+
+	/* Cores para Fundo */
+	.fundo-preto{
+		background-color: #000;
+	}
+	.fundo-branco{
+		background-color: #fff;
+	}
 
 /* Topo Barra*/
 
@@ -31,6 +48,12 @@ html{
 /* Cabeçalho */
 .img-padding{
 	padding: 10px;
+}
+.servicos{
+	padding: 15px;
+	font-family: "open sans";
+	font-weight: bold;
+	font-size: 20px;
 }
 
 /* Topo - Menu */
@@ -60,9 +83,6 @@ a:hover{
 .corbranca{
 	background-color: #fff;
 }
-.txt-branco{
-	color: #fff;
-}
 .esquerda{
 	float: left;
 }
@@ -73,7 +93,6 @@ a:hover{
 	background-color: #DCDCDC;
 }
 .mid-bot{
-	background-color: #4F4F4F;
 	padding: 5px;
 	margin: 15px;
 }
@@ -84,9 +103,10 @@ footer{
 	font-family: 'Open Sans', sans-serif;
 }
 .footer{
-	position:fixed;
-	bottom:0;
-
+  position: absolute;
+  right: 0;
+  bottom: ;
+  left: 0;
 }
 .copyright{
 	font-size: 10px;

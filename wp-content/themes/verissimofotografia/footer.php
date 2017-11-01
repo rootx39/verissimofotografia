@@ -1,4 +1,4 @@
-<footer class="barra-full-width">
+<footer class="barra-full-width footer">
 	<div class="container">
 		<div class="row">
 			<nav class="menu-rodape col-md-12 text-right">

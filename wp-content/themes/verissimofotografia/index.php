@@ -2,8 +2,8 @@
 	<div class="container corbranca">
 			<img class="img-responsive img-padding col-md-12" src="<?php header_image(); ?>" heigth="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="Cabeçalho">
 			<main >
-				<section class="text-center"><p>Newborn - Casal - Casamento - Infantil - Feminina - Família - Eventos</p></section>
-				<div class="row mid-bot">
+				<section class="text-center servicos"><p>Newborn - Casal - Casamento - Infantil - Feminina - Família - Eventos</p></section>
+				<div class="row mid-bot fundo-preto">
 					<div class="col-md-7">
 						<form action="script/enviar.php" method="post">
 							<h2 class="text-left txt-branco">Contate-nos</h2>
