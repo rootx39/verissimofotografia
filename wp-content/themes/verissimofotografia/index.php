@@ -1,8 +1,29 @@
 <?php get_header(); ?>
-	<div class="container corbranca">
-			<img class="img-responsive img-padding col-md-12" src="<?php header_image(); ?>" heigth="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="Cabeçalho">
-			<main >
-				<section class="text-center servicos"><p>Newborn - Casal - Casamento - Infantil - Feminina - Família - Eventos</p></section>
+	<div class="container">
+			<img class="img-responsive col-md-12" src="<?php header_image(); ?>" heigth="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="Cabeçalho">
+			<main >				
+				<div class="container">
+				    <div class="row">
+				        <div class="col-md-12">
+								<?php 
+								// Se tiver algum post
+								if(have_posts()):
+								// Enquanto tiver post segue a chamada.
+								while (have_posts()) : the_post();
+								
+								get_template_part('content', get_post_format());
+
+								endwhile;
+								else:
+								?>
+									<p>Não tem nada para mostrar</p>
+								<?php 
+								endif;
+								?>
+						</div>
+				    </div>
+				</div>
+				<section class="text-center servicos txt-branco"><p><a href="#">Newborn</a> - <a href="#">Casal</a> - <a href="#">Casamento</a> - <a href="#">Infantil</a> - <a href="#">Feminina</a> - <a href="#">Família</a> - <a href="#">Eventos</a></p></section>
 				<div class="row mid-bot fundo-preto">
 					<div class="col-md-7">
 						<form action="script/enviar.php" method="post">

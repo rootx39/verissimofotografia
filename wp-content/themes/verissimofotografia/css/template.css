@@ -1,6 +1,10 @@
 
 /* Configuração Global */
 
+img{
+	border: solid 3px #363636;
+}
+
 body{
 	margin: 0;
 	padding: 0;
@@ -25,6 +29,14 @@ html{
 	}
 	.fundo-branco{
 		background-color: #fff;
+	}
+
+	/* Lado esquerdo, lado direito */
+	.esquerda{
+		float: left;
+	}
+	.direita{
+		float: right;
 	}
 
 /* Topo Barra*/
@@ -53,7 +65,7 @@ html{
 	padding: 15px;
 	font-family: "open sans";
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 30px;
 }
 
 /* Topo - Menu */
@@ -78,14 +90,19 @@ a:hover{
 	color: #f55;
 }
 
-/* Mid */
+/* Topo Fotos Index.php */
 
-.corbranca{
-	background-color: #fff;
-}
-.esquerda{
+.img-topo{
+	display: inline-block;
 	float: left;
+	width: 347px;
 }
+.box-1140px{
+	width: 1140px;
+	text-align: center;
+}
+
+/* Mid */
 .lado_e{
 	float: left;
 	padding: 2px;
