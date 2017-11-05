@@ -13,16 +13,18 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<div class="container"> <!-- => Container do site inteiro / Fechamento antes do </body> -->
-	<header class="site-header">
-		<div class="barra-full-width">
-			<div class="row">
-				<div class="img-responsive col-md-12" align="center" style="background-color: #fff;">
-					<?php the_custom_logo(); ?>
-				</div>	
-				<div class="menu-principal col-md-12">
-					<?php wp_nav_menu( array('theme_location' => 'meu_menu_principal')) ?>
+<div class="container">
+	<div class="row">
+		<div class="img-responsive" align="center" style="background-color: #000; width: 100%;">
+			<?php the_custom_logo(); ?>
+		</div>	
+	</div>
+		<header class="site-header">
+			<div class="barra-full-width">
+				<div class="row">
+					<div class="menu-principal col-md-12" align="center">
+						<?php wp_nav_menu( array('theme_location' => 'meu_menu_principal')) ?>
+					</div>
 				</div>
 			</div>
-		</div>
-	</header>
+		</header>

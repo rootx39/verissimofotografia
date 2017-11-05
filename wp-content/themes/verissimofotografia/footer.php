@@ -18,10 +18,10 @@
 		</nav>
 	</div>
 	<div class="row">
-		<div class="copyright col-md-12 text-center"><p>Verissimo Fotografia - Copyright <?php the_time('Y') ?> | By <a href="https://www.designtoo.com.br">Designtoo</a></p></div>
+		<div class="copyright col-md-12 text-center"><p>Verissimo Fotografia - Copyright <?php the_time('Y') ?> - By <a href="https://www.designtoo.com.br">Designtoo</a></p></div>
 	</div>
 </footer>
-</div>
 <?php wp_footer(); ?>
+</div>
 </body>
 </html>

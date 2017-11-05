@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Text+Me+One');
 
 /* Configuração Global */
-img{ border: solid 3px #000; }
-body{ margin: 0; padding: 0; background-color: #000; }
-html{ margin: 0; padding: 0; }
+img { border: solid 3px #000; }
+body { margin: 0; padding: 0; background-color: #000; }
+html { margin: 0; padding: 0; }
 
 	/* Cores para Texto */
 	.txt-preto{	color: #000; }
@@ -20,28 +20,25 @@ html{ margin: 0; padding: 0; }
 	/* Centralizar text */
 	.centro{ text-align: center; }
 
+	/* Largura Maxima do navegador */
+	.largura-maxima{ width: 100% }
+
+	.color:hover{ background:#53a7ea; }
+
 /* Topo - Cabeçalho */
 .img-padding{ padding: 10px; }
 .servicos{ padding: 15px; font-family: "open sans"; font-weight: bold; font-size: 30px; }
 .padding{ padding: 2px; }
 .barra-full-width{ width: 100%; background-color: black; }
 .menu-principal{ font-family: 'Open Sans', sans-serif; background: black; color: white; padding: 5px; }
-.menu-principal ul li, .menu-rodape ul li { display: inline; line-height: 50px; padding-right: 20px; }
-
-/* Banner Topo */
-div.jumbotron.hero-photography { color:#fff; text-align:center; background:url('http://localhost/verissimofotografia.com.br/wp-content/uploads/2017/11/2-1.jpeg'); background-size:cover; background-position:center; padding-top:100px; padding-bottom:100px; }
-h1.hero-title, h2.hero-title, h3.hero-title { text-shadow:0 3px 3px rgba(0,0,0,0.4); color:#fff; }
-p.hero-subtitle { max-width:600px; margin:25px auto; color:#fff; }
-ul.mega-menu-wrap-meu_menu_principal{ font-family: 'Ubuntu', sans-serif; font-size: 25px;}
-
+.menu-principal ul li, .menu-rodape ul li { display: inline; padding-right: 20px; }
 
 	/* Cabeçalho - Menu - Links*/
 	a:link{ text-decoration: none; color: #fff; }
-	a:hover{ text-decoration: underline; color: #f55; }
+	a:hover{ text-decoration: underline; color: #FFB90F; }
 
 /* Mid - fotos content-image.php */
-
-.img-mid-index{ display: inline-block; width:347px; padding: 0; margin: 0; }
+.img-mid-index{ display: inline-block; min-width:347px; padding: 0; margin: 0; }
 
 /* Mid */
 .mid-bot{ padding: 5px; margin: 15px; }
