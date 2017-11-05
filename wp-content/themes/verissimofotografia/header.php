@@ -1,18 +1,28 @@
 <html lang="pt-br">
+<!-- 
+	Author: Fabiano Bordinoski
+	E-mail: indicacaoverissimo@designtoo.com.br
+	Tel/Whats: +55 (41) 9 9277-9621
+	URL: https:www.designtoo.com.br
+	Description: Foco de cada site é criar algo que seja limpo, chamando a atenção apenas para seu conteúdo.
+-->
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>Verissimo Fotografia - Newborn - Casal - Casamento - Infantil - Feminina - Família - Eventos</title>
+	<title><?php bloginfo('title'); ?></title>
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<header>
-	<div class="barra-full-width">
-		<div class="container">
+<div class="container"> <!-- => Container do site inteiro / Fechamento antes do </body> -->
+	<header class="site-header">
+		<div class="barra-full-width">
 			<div class="row">
-				<div class="logo col-md-3"><a href="index.php">Verissimo Fotografia</a></div>
-				<div class="menu-principal col-md-9 text-right"><?php wp_nav_menu( array('theme_location' => 'meu_menu_principal')) ?></div>			
+				<div class="img-responsive col-md-12" align="center" style="background-color: #fff;">
+					<?php the_custom_logo(); ?>
+				</div>	
+				<div class="menu-principal col-md-12">
+					<?php wp_nav_menu( array('theme_location' => 'meu_menu_principal')) ?>
+				</div>
 			</div>
 		</div>
-	</div>
-</header>
+	</header>

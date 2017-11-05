@@ -1,141 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Text+Me+One');
 
 /* Configuração Global */
+img{ border: solid 3px #000; }
+body{ margin: 0; padding: 0; background-color: #000; }
+html{ margin: 0; padding: 0; }
 
-img{
-	border: solid 3px #363636;
-}
-
-body{
-	margin: 0;
-	padding: 0;
-	background-color: #363636;
-}
-html{
-	margin: 0;
-	padding: 0;
-}
 	/* Cores para Texto */
-
-	.txt-preto{
-		color: #000;
-	}
-	.txt-branco{
-		color: #fff;
-	}
+	.txt-preto{	color: #000; }
+	.txt-branco{color: #fff; }
 
 	/* Cores para Fundo */
-	.fundo-preto{
-		background-color: #000;
-	}
-	.fundo-branco{
-		background-color: #fff;
-	}
+	.fundo-preto{ background-color: #000; }
+	.fundo-branco{ background-color: #fff; }
 
-	/* Lado esquerdo, lado direito */
-	.esquerda{
-		float: left;
-	}
-	.direita{
-		float: right;
-	}
+	/* Float left, Float right */
+	.esquerda{ float: left; }
+	.direita{ float: right; }
 
-/* Topo Barra*/
+	/* Centralizar text */
+	.centro{ text-align: center; }
 
-.barra-full-width{
-	width: 100%;
-	background-color: black;
-}
+/* Topo - Cabeçalho */
+.img-padding{ padding: 10px; }
+.servicos{ padding: 15px; font-family: "open sans"; font-weight: bold; font-size: 30px; }
+.padding{ padding: 2px; }
+.barra-full-width{ width: 100%; background-color: black; }
+.menu-principal{ font-family: 'Open Sans', sans-serif; background: black; color: white; padding: 5px; }
+.menu-principal ul li, .menu-rodape ul li { display: inline; line-height: 50px; padding-right: 20px; }
 
-/* Topo - logo */
+/* Banner Topo */
+div.jumbotron.hero-photography { color:#fff; text-align:center; background:url('http://localhost/verissimofotografia.com.br/wp-content/uploads/2017/11/2-1.jpeg'); background-size:cover; background-position:center; padding-top:100px; padding-bottom:100px; }
+h1.hero-title, h2.hero-title, h3.hero-title { text-shadow:0 3px 3px rgba(0,0,0,0.4); color:#fff; }
+p.hero-subtitle { max-width:600px; margin:25px auto; color:#fff; }
+ul.mega-menu-wrap-meu_menu_principal{ font-family: 'Ubuntu', sans-serif; font-size: 25px;}
 
-.logo{
-	background: black;
-	font-family: 'Open Sans', sans-serif;
-	color: white;
-	font-size: 15px; 
-	padding: 5px; 
-	text-align: center;
-	line-height: 50px;
-}
-/* Cabeçalho */
-.img-padding{
-	padding: 10px;
-}
-.servicos{
-	padding: 15px;
-	font-family: "open sans";
-	font-weight: bold;
-	font-size: 30px;
-}
 
-/* Topo - Menu */
+	/* Cabeçalho - Menu - Links*/
+	a:link{ text-decoration: none; color: #fff; }
+	a:hover{ text-decoration: underline; color: #f55; }
 
-.menu-principal{
-	font-family: 'Open Sans', sans-serif;
-	background: black; 
-	color: white; 
-	padding: 5px;
-}
-.menu-principal ul li, .menu-rodape ul li {
-	display: inline;
-	line-height: 50px;
-	padding-right: 20px;
-}
-a:link{ 
-	text-decoration: none;
-	color: #fff;
-}
-a:hover{ 
-	text-decoration: underline;
-	color: #f55;
-}
+/* Mid - fotos content-image.php */
 
-/* Topo Fotos Index.php */
-
-.img-topo{
-	display: inline-block;
-	float: left;
-	width: 347px;
-}
-.box-1140px{
-	width: 1140px;
-	text-align: center;
-}
+.img-mid-index{ display: inline-block; width:347px; padding: 0; margin: 0; }
 
 /* Mid */
-.lado_e{
-	float: left;
-	padding: 2px;
-	text-align: center;
-	background-color: #DCDCDC;
-}
-.mid-bot{
-	padding: 5px;
-	margin: 15px;
-}
+.mid-bot{ padding: 5px; margin: 15px; }
 
 /* footer */
-footer{
-	background: black;
-	font-family: 'Open Sans', sans-serif;
-}
-.footer{
-  position: absolute;
-  right: 0;
-  bottom: ;
-  left: 0;
-}
-.copyright{
-	font-size: 10px;
-	font-family: 'Open Sans', sans-serif;
-	color: white;
-}
+
+/* Form contato */
+.form-contato{ background-color: #fff; padding: 15px; }
+footer{ background: black; font-family: 'Open Sans', sans-serif; }
+.footer{ position: absolute; right: 0; bottom: ; left: 0; }
+.copyright{ font-size: 10px; font-family: 'Open Sans', sans-serif; color: white; }
 
 /* Pagina Portfólio */
-.box1{
-	padding: 5px;
-}
-.box2{
-	padding: 5px;
-}
+.box1{ padding: 5px; }
+.box2{ padding: 5px; }
 
