@@ -30,7 +30,8 @@ html { margin: 0; padding: 0; }
 .servicos{ padding: 15px; font-family: "open sans"; font-weight: bold; font-size: 30px; }
 .padding{ padding: 2px; }
 .barra-full-width{ width: 100%; background-color: black; }
-.menu-principal{ font-family: 'Open Sans', sans-serif; background: black; color: white; padding: 5px; }
+.menu-principal{ font-family: 'Open Sans', sans-serif; background: #000; color: white; padding: 5px; text-align: right; margin: 3px; height: 30px; width: 100%}
+.menu-rodape{ font-family: 'Open Sans', sans-serif; background: #000; color: white; padding: 5px; text-align: right; margin: 3px; height: 30px; width: 100% }
 .menu-principal ul li, .menu-rodape ul li { display: inline; padding-right: 20px; }
 
 	/* Cabeçalho - Menu - Links*/

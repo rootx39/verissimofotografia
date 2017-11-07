@@ -96,6 +96,16 @@ class IOWDDB extends IOWDDB_Class
         $this->create_table("iowd_images", $fields);
     }
 
+    public function update()
+    {
+       $options = json_decode(get_option(IOWD_PREFIX . "_options"), true);
+
+       if(!in_array("optimize_gallery", $options)){
+           $options["optimize_gallery"] = "0";
+           update_option(IOWD_PREFIX . "_options",json_encode($options));
+       }
+    }
+
 
 }
 

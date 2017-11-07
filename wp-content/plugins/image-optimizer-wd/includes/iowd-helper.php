@@ -52,7 +52,8 @@ class IOWD_Helper
 
     public static function get_images_from_dir_recursiv($dir_path, &$image_paths = array())
     {
-
+        global $wd_bwg_options;
+        $options = json_decode(get_option(IOWD_PREFIX . "_options"), true);
         if (file_exists($dir_path)) {
             $dir = scandir($dir_path);
             $images = glob($dir_path . '/*.{jpg,png,gif,jpeg,pdf}', GLOB_BRACE);
@@ -64,10 +65,14 @@ class IOWD_Helper
             }
             $image_paths = array_merge($image_paths, $images);
             foreach ($dir as $file) {
-                if ($file == "." || $file == ".." || substr($file, 0, 1) == ".") {
+                if ($file == "." || $file == "..") {
                     continue;
                 }
-
+                if(!(strpos($file, ".original") !== false && $options["exclude_full_size"] == "0" && !empty($wd_bwg_options))){
+                    if( (strpos($file, ".") !== false)){
+                        continue;
+                    }
+                }
                 if (is_dir($dir_path . "/" . $file)) {
                     self::get_images_from_dir_recursiv($dir_path . "/" . $file, $image_paths);
                 }

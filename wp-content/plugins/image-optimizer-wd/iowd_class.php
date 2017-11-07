@@ -8,7 +8,7 @@ class IOWD
 {
 
     protected static $instance = null;
-    private static $version = '1.0.2';
+    private static $version = '1.0.3';
     private static $page;
     private $reg_autoloader = false;
     private $options = array();
@@ -20,7 +20,7 @@ class IOWD
         $this->options = json_decode(get_option(IOWD_PREFIX . "_options"), true);
 
         add_action('admin_init', array('IOWD_Settings', 'save_settings'));
-       // add_action('admin_post_nopriv_save_settings', array('IOWD_Settings', 'save_settings'));
+        // add_action('admin_post_nopriv_save_settings', array('IOWD_Settings', 'save_settings'));
 
         // ajax
         add_action('wp_ajax_choose_dirs', array($this, 'ajax'));
@@ -69,7 +69,7 @@ class IOWD
 
     public static function activate()
     {
-        if (version_compare(phpversion(), "5.4", '<')){
+        if (version_compare(phpversion(), "5.4", '<')) {
             echo "<div class='error'><p>" . __("Image Optimizer plugin requires PHP 5.4 or higher.", IOWD_PREFIX) . "</p></div>";
             wp_die();
         }
@@ -83,8 +83,11 @@ class IOWD
             add_option(IOWD_PREFIX . "_pro", "yes", '', 'no');
         }
 
+        require_once IOWD_DIR_CLASSES . "/iowddb.php";
+        $db = new IOWDDB();
         if ($version && version_compare($version, self::$version, '<')) {
             update_option(IOWD_PREFIX . "_version", self::$version);
+            $db->update();
 
         } else {
             add_option(IOWD_PREFIX . "_version", self::$version, '', 'no');
@@ -98,8 +101,6 @@ class IOWD
             }
 
             self::add_options_to_db();
-            require_once IOWD_DIR_CLASSES . "/iowddb.php";
-            $db = new IOWDDB();
             $db->create_iowd_images_table();
         }
 
@@ -144,6 +145,7 @@ class IOWD
             "gif_to_png"                         => "0",
             "jpg_to_webp"                        => "0",
             "png_to_webp"                        => "0",
+            "optimize_gallery"                   => "0",
         );
         add_option(IOWD_PREFIX . "_options", json_encode($options), '', 'no');
     }
@@ -180,13 +182,13 @@ class IOWD
 
     public function notice()
     {
-        if($this->is_iowd_page()) {
+        if ($this->is_iowd_page()) {
             $limitation = IOWD_Helper::limitation();
             $whitelist = array(
                 '127.0.0.1',
                 '::1'
             );
-            if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
+            if (in_array($_SERVER['REMOTE_ADDR'], $whitelist)) {
                 echo "<div class='error'><p>" . __("Image optimizing is disabled on Localhost. Please install the plugin on a live server to optimize images.", IOWD_PREFIX) . "</p></div>";
             }
             if ($limitation["already_optimized"] >= $limitation["limit"]) {
@@ -293,7 +295,7 @@ class IOWD
     public function admin_menu()
     {
         $parent_slug = null;
-        if( get_option( "iowd_subscribe_done" ) == 1 ){
+        if (get_option("iowd_subscribe_done") == 1) {
             $parent_slug = "iowd_settings";
             add_menu_page("Image Optimizer", "Image Optimizer", 'manage_options', 'iowd_settings', array($this, 'iowd_admin'), IOWD_URL_IMG . "/icon.png");
         }
@@ -416,13 +418,16 @@ class IOWD
 
             wp_enqueue_script(IOWD_PREFIX . '_settings-js', IOWD_URL_JS . '/settings.js', array(), self::$version);
 
+            $from_gallery = isset($_GET["target"]) && $_GET["target"] == "wd_gallery" ? 1 : 0;
 
             wp_localize_script(IOWD_PREFIX . '_settings-js', 'iowdSettingsGlobal', array(
-                "image_url"     => IOWD_URL_IMG,
-                "ajaxURL"       => admin_url('admin-ajax.php'),
-                "nonce"         => wp_create_nonce('nonce_' . IOWD_PREFIX),
-                "page"          => (isset($_GET["page"]) ? $_GET["page"] : IOWD_PREFIX . "_settings"),
-                "save_dirs_txt" => __("Save directories", IOWD_PREFIX),
+                "image_url"             => IOWD_URL_IMG,
+                "ajaxURL"               => admin_url('admin-ajax.php'),
+                "nonce"                 => wp_create_nonce('nonce_' . IOWD_PREFIX),
+                "page"                  => (isset($_GET["page"]) ? $_GET["page"] : IOWD_PREFIX . "_settings"),
+                "save_dirs_txt"         => __("Save directories", IOWD_PREFIX),
+                "save_gallery_dirs_txt" => __("Save Gallery directories", IOWD_PREFIX),
+                "from_gallery"          => $from_gallery,
             ));
 
             wp_enqueue_script(IOWD_PREFIX . '_calendar-js', IOWD_URL_JS . '/calendar.js', array(), self::$version, true);

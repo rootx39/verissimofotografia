@@ -229,6 +229,10 @@ class IOWD_Optimize
                         continue;
                     }
 
+                    if($options["exclude_full_size"] == "1" && strpos($other_image, ".original") !== false){
+                        continue;
+                    }
+
                     $other_path = str_replace($protocaol . '://' . $_SERVER['SERVER_NAME'], $_SERVER['DOCUMENT_ROOT'], $other_image);
 
                     if (!file_exists($other_path)) {
@@ -714,7 +718,7 @@ class IOWD_Optimize
                 continue;
             }
 
-            if ($options["enable_conversion"] == 1) {
+            if ($options["enable_conversion"] == 1 && !($request_row["media"] == 0 && strpos($request_row["path"], "photo-gallery"))) {
                 $request_row = $this->convert($request_row);
             }
 

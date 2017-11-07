@@ -2,9 +2,30 @@ jQuery(document).ready(function () {
 
     if (iowdSettingsGlobal.page == "iowd_settings") {
 
+        if (iowdSettingsGlobal.from_gallery == 1) {
+            removeGalleryFromOther();
+            jQuery(".iowd_optimize_gallery").prop('checked', true);
+            iowdCickSettings("optimize_gallery", 1);
+        } else {
+            iowdScan(0);
+        }
+
+        jQuery(".iowd-toggle").click(function () {
+            if (jQuery(this).find("span").hasClass("iowd-toggle-open")) {
+                jQuery(this).closest(".iowd-toggle-container").find(".iowd-toggle-body").slideUp();
+                jQuery(this).find("span").removeClass("iowd-toggle-open");
+                jQuery(this).find("span").addClass("iowd-toggle-close");
+            } else {
+                jQuery(this).closest(".iowd-toggle-container").find(".iowd-toggle-body").slideDown();
+                jQuery(this).find("span").removeClass("iowd-toggle-close");
+                jQuery(this).find("span").addClass("iowd-toggle-open");
+            }
+
+        });
+
         jQuery("#settings_form").tooltip();
         // quick settings
-        jQuery(".iowd_quick_automatically_optimize").change(function () {
+        jQuery(".iowd_quick_settings_el").change(function () {
             var value = 0;
             if (jQuery(this).is(":checked") == true) {
                 value = 1;
@@ -16,7 +37,7 @@ jQuery(document).ready(function () {
 
         // standart settings
         jQuery(".iowd-standart-mode-view1 .iowd-standart-cell").click(function () {
-            if(jQuery(this).attr("data-value") == "extreme"){
+            if (jQuery(this).attr("data-value") == "extreme") {
                 return false;
             }
             jQuery("[name=standard_setting]").val(jQuery(this).attr("data-value"));
@@ -121,7 +142,7 @@ jQuery(document).ready(function () {
                 return false;
             }
         });
-        
+
         jQuery(".iowd-dir-tree-title").on('click', function (e) {
             e.stopPropagation();
             var thisElem = jQuery(e.target).closest("li");
@@ -168,7 +189,9 @@ jQuery(document).ready(function () {
             }
             jQuery(".iowd-spinner-select").show();
             jQuery.post(iowd.ajaxURL, data, function (response) {
-                jQuery(".iowd-dir-paths").html(response);
+                response = JSON.parse(response);
+                jQuery(".iowd-dir-paths").html(response["other"]);
+                jQuery(".iowd-dir-gallery-paths").html(response["gallery"]);
                 jQuery(".iowd-spinner-select").hide();
                 save_settings();
             });
@@ -196,7 +219,9 @@ jQuery(document).ready(function () {
                 }
                 jQuery(".iowd-spinner-select").show();
                 jQuery.post(iowd.ajaxURL, data, function (response) {
-                    jQuery(".iowd-dir-paths").append(response);
+                    response = JSON.parse(response);
+                    jQuery(".iowd-dir-paths").append(response["other"]);
+                    jQuery(".iowd-dir-gallery-paths").append(response["gallery"]);
                     jQuery(".iowd-spinner-select").hide();
                     updateOtherFolders();
                 });
@@ -349,8 +374,8 @@ jQuery(document).ready(function () {
             window.location.href = "admin.php?page=iowd_settings";
         });
     });
-    jQuery(".iowd-butn-ajax-container").closest(".iowd-main").append('<img src="http://devops.web-dorado.info/Sergey/wp4/wp-content/plugins/image-optimizer-wd/assets/img/spinner.gif" class="iowd-spinner iowd-loading-spinner-ajax" style="display:inline-block; vertical-align:sub;">');
-    iowdScan(0);
+    jQuery(".iowd-butn-ajax-container").closest(".iowd-main").append('<img src="' + iowdSettingsGlobal.image_url + '/spinner.gif" class="iowd-spinner iowd-loading-spinner-ajax" style="display:inline-block; vertical-align:sub;">');
+
 
 });
 
@@ -360,10 +385,10 @@ function updateOtherFolders(html) {
         html = true;
     }
     var otherFolders = {};
-
+    var otherFolderPaths = [];
     jQuery(".iowd_other_folders_row").each(function () {
         var otherFolderPath = jQuery(this).find(".iowd_other_path").attr("data-name").trim();
-        if (otherFolderPath) {
+        if (otherFolderPath && otherFolderPaths.indexOf(otherFolderPath) == -1) {
             var otherImages = [];
             jQuery(this).find(".iowd_other_img_path").each(function () {
                 var imagePath = jQuery(this).find(".iowd_image_path").html();
@@ -372,23 +397,38 @@ function updateOtherFolders(html) {
                 }
             });
             otherFolders[otherFolderPath] = otherImages;
+            otherFolderPaths.push(otherFolderPath);
         }
 
     });
 
     if (html === true) {
         if (Number(Object.keys(otherFolders).length) > 0) {
-            otherFolders = JSON.stringify(otherFolders);
-            if (jQuery(".iowd_other_save_btn").length == 0) {
+            var otherFoldersGallery = {};
+            var otherFoldersOther = jQuery.extend({}, otherFolders);
+            if (jQuery("[name=gallery_upload_dir]").length > 0) {
+                otherFoldersGallery = otherFolders[jQuery("[name=gallery_upload_dir]").val()];
+                delete otherFoldersOther[jQuery("[name=gallery_upload_dir]").val()];
+            }
+
+            if (jQuery(".iowd_other_save_btn").length == 0 && Number(Object.keys(otherFoldersOther).length) > 0) {
                 var saveButton = '<div class="iowd_other_save_btn"><button class="iowd-btn iowd-btn-small iowd-btn-secondary">' + iowdSettingsGlobal.save_dirs_txt + '</button></div>';
-                jQuery(".iowd_other_dirs_container").append(saveButton);
+                jQuery(".iowd_other_dirs_container .iowd-toggle-body").append(saveButton);
+
+            }
+            if (jQuery(".iowd_gallery_save_btn").length == 0 && Number(Object.keys(otherFoldersGallery).length) > 0) {
+                var saveButton = '<div class="iowd_gallery_save_btn"><button class="iowd-btn iowd-btn-small iowd-btn-secondary">' + iowdSettingsGlobal.save_gallery_dirs_txt + '</button></div>';
+
+                jQuery(".iowd_wd_plugins .iowd-toggle-body").append(saveButton);
             }
         }
         else {
             jQuery(".iowd_other_save_btn").remove();
+            jQuery(".iowd_gallery_save_btn").remove();
             otherFolders = "";
         }
     }
+    otherFolders = typeof otherFolders == "object" ? JSON.stringify(otherFolders) : otherFolders;
     jQuery("[name=other_folders]").val(otherFolders);
 
 }
@@ -405,7 +445,9 @@ function showOtherFolders() {
 
         jQuery(".iowd-spinner-select").show();
         jQuery.post(iowd.ajaxURL, data, function (response) {
-            jQuery(".iowd-dir-paths").append(response);
+            response = JSON.parse(response);
+            jQuery(".iowd-dir-paths").append(response["other"]);
+            jQuery(".iowd-dir-gallery-paths").append(response["gallery"]);
             jQuery(".iowd-spinner-select").hide();
             updateOtherFolders();
         });
@@ -439,6 +481,7 @@ function iowdShowHide(onChangeElem, showToggleElem, checkedVal, parent, parentVa
         }
     }
 }
+
 function iowdShowHideChange(onChangeElem, showToggleElem, checkedVal, onChangeElemChild, showToggleElemChild, checkedValChild) {
 
     jQuery("[name=" + onChangeElem).change(function () {
@@ -459,8 +502,68 @@ function iowdCickSettings(name, value) {
         value: value
     };
 
-
     jQuery.post(iowd.ajaxURL, data, function (response) {
+        if (name = "optimize_gallery") {
+            if (value == 1) {
+                getGalleryDir();
+            } else {
+                removeGalleryFromOther();
+                jQuery("#settings_form").submit();
+            }
+        }
+    });
+}
+
+function removeGalleryFromOther() {
+    var gelleryDir = jQuery("[name=gallery_upload_dir]").val().trim();
+    var otherFolders = jQuery("[name=other_folders]").val().trim();
+    if (otherFolders) {
+        var otherFolders = JSON.parse(otherFolders);
+        delete otherFolders[gelleryDir];
+        jQuery("[name=other_folders]").val(JSON.stringify(otherFolders));
+    }
+
+}
+
+function getGalleryDir() {
+    var dirData = {};
+    dirData[jQuery("[name=gallery_upload_dir]").val()] = [];
+    var data = {
+        action: "choose_dirs",
+        nonce_iowd: iowd.nonce,
+        dir: JSON.stringify(dirData)
+    };
+
+    jQuery(".iowd-spinner-select").show();
+    jQuery.post(iowd.ajaxURL, data, function (response) {
+        response = JSON.parse(response);
+        jQuery(".iowd-dir-paths").append(response["other"]);
+        jQuery(".iowd-dir-gallery-paths").append(response["gallery"]);
+        jQuery(".iowd-spinner-select").hide();
+        updateOtherFolders();
+
+        var data = {
+            action: "quick_settings",
+            nonce_iowd: iowd.nonce,
+            name: "other_folders",
+            value: jQuery("[name=other_folders]").val()
+        };
+
+        jQuery.post(iowd.ajaxURL, data, function (response) {
+            /*if (jQuery("[name=other_folders]").val()) {
+                var otherFolders = JSON.parse(jQuery("[name=other_folders]").val().trim());
+                var count = 0;
+                for (var key in otherFolders) {
+                    count = count + otherFolders[key].length;
+                }
+                if(count){
+                    jQuery(".iowd-optimized-ajax-text").remove();
+                }
+            }*/
+
+            iowdScan(0);
+        });
+
     });
 }
 
@@ -481,14 +584,14 @@ function iowdScan(limit) {
 
     jQuery.post(iowd.ajaxURL, data, function (response) {
         response = JSON.parse(response);
-        if(response["status"] != "done"){
+        if (response["status"] != "done") {
             limit = limit + 2000;
             iowdScan(limit);
-        } else{
+        } else {
             var data = {
                 action: "scan_all",
                 nonce_iowd: iowd.nonce,
-                limit : limit
+                limit: limit
             };
 
             jQuery.post(iowd.ajaxURL, data, function (response) {
@@ -502,14 +605,15 @@ function iowdScan(limit) {
 
 function iowdLoadBlocks(scan) {
     jQuery(".iowd-loading-spinner-ajax").remove();
-    if(scan["not_optimized_data"] > 0 || scan["not_optimized_data_sizes"] > 0){
+    if (scan["not_optimized_data"] > 0 || scan["not_optimized_data_sizes"] > 0) {
         jQuery(".iowd-stat-ajax span b").html("There are " + scan["not_optimized_data_media"] + " full-size ( totally " + scan["not_optimized_data_media_sizes"] + " ) images from media library  and " + scan["not_optimized_data_other"] + " from other directories ready for optimize");
     }
 
     dataAttachments = jQuery(".iowd-butn-ajax-container").attr("data-attachments");
-    if(dataAttachments == "1" || scan["not_optimized_data"] > 0 || scan["not_optimized_data_sizes"] > 0){
+    if (dataAttachments == "1" || scan["not_optimized_data"] > 0 || scan["not_optimized_data_sizes"] > 0) {
         jQuery(".iowd-butn-ajax-container").show();
-    } else{
+        jQuery(".iowd-optimized-ajax-text").hide();
+    } else {
         if (scan["optimized_data"]) {
             jQuery(".iowd-optimized-ajax-text").html('<strong class="iowd-up-to-date">All images are optimized and up to date.</strong>');
         } else {

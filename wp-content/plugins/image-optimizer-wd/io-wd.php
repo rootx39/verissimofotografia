@@ -4,7 +4,7 @@
  * Plugin Name: Image Optimizer WD
  * Plugin URI: https://web-dorado.com/products/wordpress-image-optimizer.html
  * Description: Image Optimizer WordPress plugin enables you to resize, compress and optimize PNG, JPG, GIF files while maintaining image quality.
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: WebDorado
  * Author URI: https://web-dorado.com/
  * License: GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html

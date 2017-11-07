@@ -13,18 +13,16 @@
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
-<div class="container">
-	<div class="row">
-		<div class="img-responsive" align="center" style="background-color: #000; width: 100%;">
-			<?php the_custom_logo(); ?>
-		</div>	
-	</div>
-		<header class="site-header">
-			<div class="barra-full-width">
-				<div class="row">
-					<div class="menu-principal col-md-12" align="center">
-						<?php wp_nav_menu( array('theme_location' => 'meu_menu_principal')) ?>
-					</div>
+	<div class="container">
+		<div class="row" style="width: 100%;">
+			<div class="img-responsive" align="center" style="background-color: #000; width: 100%;">
+				<?php the_custom_logo(); ?>
+			</div>	
+		</div>
+		<header>
+			<div class="row">
+				<div class="menu-principal">
+					<?php wp_nav_menu( array('theme_location' => 'meu_menu_principal')) ?>
 				</div>
 			</div>
 		</header>

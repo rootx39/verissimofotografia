@@ -7,6 +7,7 @@ class IOWD_Settings
 {
 
     private $tabs = array();
+    public  $photo_gallery_dir = null;
 
 
     public function __construct()
@@ -477,6 +478,18 @@ class IOWD_Settings
 
     }
 
+    private static function get_gallery_dir()
+    {
+        global $wd_bwg_options;
+        if ($wd_bwg_options) {
+            $photo_gallery_dir = ABSPATH . "/" .$wd_bwg_options->images_directory . '/photo-gallery';
+
+            return $photo_gallery_dir;
+        }
+
+        return null;
+    }
+
     public static function save_settings()
     {
         if(isset($_POST["action"]) && $_POST["action"] == "save_settings") {
@@ -492,6 +505,16 @@ class IOWD_Settings
                 }
                 if ($new_settings["scheduled_optimization"] == "0") {
                     wp_clear_scheduled_hook('iowd_optimize');
+                }
+
+                $photo_gallery_dir = self::get_gallery_dir();
+
+                $other_dirs = $new_settings["other_folders"] ? json_decode(htmlspecialchars_decode(stripslashes($new_settings["other_folders"])), true) : array();
+                $other_dirs = array_keys($other_dirs);
+                if (!in_array($photo_gallery_dir, $other_dirs)) {
+                    $new_settings["optimize_gallery"] = 0;
+                } else {
+                    $new_settings["optimize_gallery"] = 1;
                 }
 
                 update_option(IOWD_PREFIX . "_options", json_encode($new_settings));
@@ -540,6 +563,7 @@ class IOWD_Settings
 
     public function display()
     {
+        $this->photo_gallery_dir = self::get_gallery_dir();
         // get options
         $options = json_decode(get_option(IOWD_PREFIX . "_options"), true);
         // get mode

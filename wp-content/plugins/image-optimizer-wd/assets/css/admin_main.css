@@ -284,11 +284,11 @@ a:focus {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.iowd_other_dirs_container{
+.iowd_other_dirs_container, .iowd_wd_plugins{
     margin-top: 20px;
 }
 
-.iowd_other_save_btn {
+.iowd_other_save_btn, .iowd_gallery_save_btn {
     text-align: right;
 }
 
@@ -459,7 +459,7 @@ a:focus {
     border-left: 1px solid #dddfe3 !important;
 }
 
-.iowd-dir-paths {
+.iowd-dir-paths, .iowd-dir-gallery-paths {
     margin: 10px 0px;
 }
 
@@ -1056,3 +1056,34 @@ input:checked + .iowd-slider:before {
 }
 
 
+.iowd-toggle-indicator {
+    float:right;
+}
+.iowd-toggle:after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.iowd-toggle-indicator:before {
+    display: inline-block;
+    font: 400 20px/1 dashicons;
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-decoration: none !important;
+    border: 1px solid #868484;
+    border-radius: 32px;
+    padding: 1px 2px 1px 0px;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.iowd-toggle-open:before {
+    content: "\f142";
+}
+
+.iowd-toggle-close:before {
+    content: "\f140";
+}

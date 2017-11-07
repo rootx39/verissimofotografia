@@ -29,7 +29,7 @@ class IOWD_Ajax
                     $path = get_attached_file($id);
                     $type = strtolower(pathinfo($path, PATHINFO_EXTENSION));
                     global $wpdb;
-                    $row = $wpdb->get_row("SELECT COUNT(*) AS image_count, SUM(image_orig_size) AS image_orig_size, SUM(image_size) AS image_size, post_id FROM " . $wpdb->prefix . "iowd_images WHERE post_id='" . $id."' GROUP BY post_id");
+                    $row = $wpdb->get_row("SELECT COUNT(*) AS image_count, SUM(image_orig_size) AS image_orig_size, SUM(image_size) AS image_size, post_id FROM " . $wpdb->prefix . "iowd_images WHERE post_id='" . $id . "' GROUP BY post_id");
 
                     $reduced = $row->image_orig_size - $row->image_size;
                     $reduced_percent = $row->image_orig_size ? ($reduced / $row->image_orig_size) * 100 : 0;
@@ -187,8 +187,10 @@ class IOWD_Ajax
 
     public static function choose_dirs()
     {
+        global $wd_bwg_options;
         $dirs = isset($_POST["dir"]) ? json_decode(stripslashes($_POST["dir"])) : array();
-        $template = "";
+        $template_other = "";
+        $template_gallery = "";
         if ($dirs) {
             foreach ($dirs as $dir => $images) {
                 if (!$images) {
@@ -205,20 +207,28 @@ class IOWD_Ajax
                     $images_tmpl .= '</div>';
                 }
                 $dir_name = str_replace(get_home_path(), "", $dir);
-                $template .= '<div class="iowd_other_folders_row">' .
+                $template = '<div class="iowd_other_folders_row">' .
                     '<div class="other_folders" >' .
                     '<span class="iowd_other_path" title="' . $dir . '" data-name="' . $dir . '">' . $dir_name . ' </span> ' . $show .
                     '<span class="iowd_remove"> × </span>' .
                     '</div>' . $images_tmpl .
 
                     '</div>';
+
+                if (strpos($dir_name, "photo-gallery") !== false && isset($wd_bwg_options)) {
+                    $template_gallery .= $template;
+                } else {
+                    $template_other .= $template;
+                }
             }
 
         }
 
-        echo $template;
+        echo json_encode(array("other" => $template_other, "gallery" => $template_gallery));
         wp_die();
     }
+
+
 
     public static function filter_report()
     {
@@ -247,12 +257,12 @@ class IOWD_Ajax
     public static function quick_settings()
     {
         $name = isset($_POST["name"]) ? $_POST["name"] : false;
-        $value = isset($_POST["value"]) ? (int)$_POST["value"] : false;
+        $value = isset($_POST["value"]) ? $_POST["value"] : false;
 
         if ($name !== false && $value !== false) {
             $settings = json_decode(get_option(IOWD_PREFIX . "_options"), true);
             if (isset($settings[$name])) {
-                $settings[$name] = $value;
+                $settings[$name] = esc_html($value);
                 update_option(IOWD_PREFIX . "_options", json_encode($settings));
             }
 
@@ -312,24 +322,24 @@ class IOWD_Ajax
         $other = array();
         $media_sizes = array();
         $attachments = array();
-        for($i=0; $i <= $limit; $i+=2000){
-            $db_attachments = get_site_transient("iowd_temp_scan_data_".$i);
+        for ($i = 0; $i <= $limit; $i += 2000) {
+            $db_attachments = get_site_transient("iowd_temp_scan_data_" . $i);
             $media_attachments = isset($db_attachments["media"]) ? $db_attachments["media"] : array();
             $media_sizes_attachments = isset($db_attachments["media_sizes"]) ? $db_attachments["media_sizes"] : array();
             $other_attachments = isset($db_attachments["other"]) ? $db_attachments["other"] : array();
             $u_attachments = isset($db_attachments["attachments"]) ? $db_attachments["attachments"] : array();
 
-            $media = $media +  $media_attachments;
+            $media = $media + $media_attachments;
             $other = $other + $other_attachments;
             $media_sizes = $media_sizes + $media_sizes_attachments;
             $attachments = $attachments + $u_attachments;
 
-            delete_site_transient("iowd_temp_scan_data_".$i);
+            delete_site_transient("iowd_temp_scan_data_" . $i);
         }
         $all_attachments = array(
-            "media" => $media,
+            "media"       => $media,
             "media_sizes" => $media_sizes,
-            "other" => $other,
+            "other"       => $other,
             "attachments" => $attachments,
         );
 
