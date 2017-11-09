@@ -1,4 +1,8 @@
 <?php 
+
+/* Segurança */
+remove_action('wp_head', 'wp_generator');
+
 // Função para scripts e estilos
 function load_scripts(){
 	// Bootstrap
@@ -8,6 +12,7 @@ function load_scripts(){
 	// Personalizados
 	wp_enqueue_style('template', get_template_directory_uri() . '/css/template.css', array(), '1.0', 'all', true);
 	wp_enqueue_script('template', get_template_directory_uri() . '/js/template.js', array(), null, true);
+	wp_enqueue_style('googlefonts', 'https://fonts.googleapis.com/css?family=Bubbler+One', array(), null);
 }
 add_action('wp_enqueue_scripts', 'load_scripts');
 

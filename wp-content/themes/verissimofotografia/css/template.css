@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Text+Me+One');
 
+
 /* Configuração Global */
 img { border: solid 3px #000; }
 body { margin: 0; padding: 0; background-color: #000; }
@@ -23,34 +24,61 @@ html { margin: 0; padding: 0; }
 	/* Largura Maxima do navegador */
 	.largura-maxima{ width: 100% }
 
-	.color:hover{ background:#53a7ea; }
-
 /* Topo - Cabeçalho */
 .img-padding{ padding: 10px; }
-.servicos{ padding: 15px; font-family: "open sans"; font-weight: bold; font-size: 30px; }
+.servicos{ padding: 15px; font-family: "Bubbler One"; font-weight: bold; font-size: 30px; }
 .padding{ padding: 2px; }
 .barra-full-width{ width: 100%; background-color: black; }
-.menu-principal{ font-family: 'Open Sans', sans-serif; background: #000; color: white; padding: 5px; text-align: right; margin: 3px; height: 30px; width: 100%}
-.menu-rodape{ font-family: 'Open Sans', sans-serif; background: #000; color: white; padding: 5px; text-align: right; margin: 3px; height: 30px; width: 100% }
+.menu-principal{ font-family: 'Bubbler One', sans-serif; background: #000; color: white; padding: 5px; text-align: right; margin: 10px; height: 30px; width: 100%}
+.menu-rodape{ font-family: 'Bubbler One', sans-serif; background: #000; color: white; padding: 5px; height: 45px; width: 100%; margin-top: 20px; margin-right: 3px; margin-left: 3px; margin-bottom: 3px; }
 .menu-principal ul li, .menu-rodape ul li { display: inline; padding-right: 20px; }
+nav.menu-rodape{ border-bottom: solid 1px #1C1C1C; }
+nav.menu-principal{ border-top: solid 1px #1C1C1C; }
 
 	/* Cabeçalho - Menu - Links*/
 	a:link{ text-decoration: none; color: #fff; }
 	a:hover{ text-decoration: underline; color: #FFB90F; }
+	a:active{ text-decoration: none; color: #7CFC00 }
 
-/* Mid - fotos content-image.php */
-.img-mid-index{ display: inline-block; min-width:347px; padding: 0; margin: 0; }
+/* Pagina content-image.php */
+.img-mid-index{ display: inline-block; min-width:347px; background-color: #000; color: #fff }
 
 /* Mid */
 .mid-bot{ padding: 5px; margin: 15px; }
 
+/* Pagina header.php */
+.img-center{margin-left: auto; margin-right: auto;}
+
+/* Pagina page-sobre.php */
+.page-sobre{ background-color: #000; color: #828282; font-family:'Bubbler One', sans-serif; font-size: 17px; margin-top: 5px; text-transform: capitalize; }
+.size-post-thumbnail{ width: 100% }
+.form-contato{ background-color: #000; color: #000; }
+.conteudo-missao{ font-family:'Bubbler One', sans-serif; color: #828282; padding: 20px; margin: 10px; font-size: 25px; }
+.margin-topo{ margin-top: 70px; }
+
+/* Pagina page-home.php */
+.slider-home{ margin-bottom: 25px; padding: 2px; }
+
+/* Pagina page-portfolio.php */
+.limite-98{ width: 98%; margin-right: auto; margin-left: auto; }
+
+/* Pagina page-contato.php */
+.page-contato{ background-color: white; color: black; padding: 10px; margin-top: 2px; }
+#wpforms-submit-721 { width: 100%; font-family:'Bubbler One', sans-serif; background-color: black; color: #828282; }
+#wpforms-submit-721:hover{ background-color: #FFD700; color: black; }
+.size-thumbnail{ width: 665px; max-width: 100%; height: 100%; padding: 30px; }
+.wd-sobre{ padding: 30px; }
+
+
 /* footer */
+
+.barra-horizontal{ width: 100%; border-top: 1px solid #1C1C1C; margin-top: 5px; margin-bottom: 5px; }
 
 /* Form contato */
 .form-contato{ background-color: #fff; padding: 15px; }
-footer{ background: black; font-family: 'Open Sans', sans-serif; }
+footer{ background: black; font-family: 'Bubbler One', sans-serif; }
 .footer{ position: absolute; right: 0; bottom: ; left: 0; }
-.copyright{ font-size: 10px; font-family: 'Open Sans', sans-serif; color: white; }
+.copyright{ font-size: 10px; font-family: 'Bubbler One', sans-serif; color: white; }
 
 /* Pagina Portfólio */
 .box1{ padding: 5px; }

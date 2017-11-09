@@ -1,4 +1,4 @@
-/** Sunday 5th of November 2017 01:18:48 AM (core) **/
+/** Tuesday 7th of November 2017 10:24:53 PM (core) **/
 
 #mega-menu-wrap-menu-rodape, #mega-menu-wrap-menu-rodape #mega-menu-menu-rodape, #mega-menu-wrap-menu-rodape #mega-menu-menu-rodape ul.mega-sub-menu, #mega-menu-wrap-menu-rodape #mega-menu-menu-rodape li.mega-menu-item, #mega-menu-wrap-menu-rodape #mega-menu-menu-rodape a.mega-menu-link {
   -moz-transition: none;
@@ -276,7 +276,7 @@
   width: auto;
   display: block;
   color: #fff;
-  text-transform: none;
+  text-transform: capitalize;
   text-decoration: none;
   background: rgba(0, 0, 0, 0);
   -webkit-border-radius: 0px 0px 0px 0px;
@@ -285,7 +285,7 @@
   -o-border-radius: 0px 0px 0px 0px;
   border-radius: 0px 0px 0px 0px;
   font-family: inherit;
-  font-size: 14px;
+  font-size: 19px;
 }
 @media only screen and (max-width: 600px) {
   #mega-menu-wrap-menu-rodape #mega-menu-menu-rodape > li.mega-menu-item > a.mega-menu-link {
@@ -1194,7 +1194,7 @@
   width: auto;
   display: block;
   color: #fff;
-  text-transform: none;
+  text-transform: capitalize;
   text-decoration: none;
   background: rgba(0, 0, 0, 0);
   -webkit-border-radius: 0px 0px 0px 0px;
@@ -1203,7 +1203,7 @@
   -o-border-radius: 0px 0px 0px 0px;
   border-radius: 0px 0px 0px 0px;
   font-family: inherit;
-  font-size: 14px;
+  font-size: 19px;
 }
 @media only screen and (max-width: 600px) {
   #mega-menu-wrap-meu_menu_principal #mega-menu-meu_menu_principal > li.mega-menu-item > a.mega-menu-link {
